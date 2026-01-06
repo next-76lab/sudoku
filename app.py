@@ -1,14 +1,14 @@
 """
-✨ STARLIGHT SUDOKU ✨
-=====================
-可愛いナンプレ（数独）ゲーム！100ステージ搭載
+✨ STARLIGHT NANPURE ✨
+======================
+可愛いナンプレゲーム！100ステージ搭載
 動く背景 + ステージセレクト + スマホ完全対応
 """
 
 import streamlit as st
 import streamlit.components.v1 as components
 
-st.set_page_config(page_title="Starlight Sudoku", page_icon="🔢", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Starlight Nanpure", page_icon="🔢", layout="wide", initial_sidebar_state="collapsed")
 
 st.markdown("""
 <style>
@@ -91,7 +91,7 @@ game_html = """
             margin-bottom: 8px;
         }
         
-        #sudoku-grid {
+        #nanpure-grid {
             display: grid;
             grid-template-columns: repeat(9, 1fr);
             gap: 1px;
@@ -243,10 +243,10 @@ game_html = """
     <div id="bg-canvas"></div>
     
     <div id="game-container">
-        <div id="title" onclick="showStageSelect()">⭐ STARLIGHT SUDOKU ⭐</div>
+        <div id="title" onclick="showStageSelect()">⭐ STARLIGHT NANPURE ⭐</div>
         <div id="stage-display" onclick="showStageSelect()">STAGE <span id="stage-num">1</span> / 100 ▼</div>
         <div id="timer">⏱ 00:00</div>
-        <div id="sudoku-grid"></div>
+        <div id="nanpure-grid"></div>
         <div id="number-palette"></div>
         <div id="button-bar">
             <button class="action-btn" id="hint-btn">💡 ヒント</button>
@@ -340,7 +340,7 @@ game_html = """
         }
         
         const TOTAL_STAGES = 100;
-        const SAVE_KEY = 'starlight_sudoku_v5';
+        const SAVE_KEY = 'starlight_nanpure_v1';
         
         let currentStage = 1, clearedStages = [];
         let board = [], solution = [], fixed = [];
@@ -349,7 +349,7 @@ game_html = """
         
         function getEmptyCells(stage) { return Math.min(55, 25 + Math.floor(stage * 0.3)); }
         
-        function generateSudoku() {
+        function generateNanpure() {
             solution = Array(81).fill(0); fillBoard(solution, 0);
             board = [...solution]; fixed = Array(81).fill(true);
             const emptyCells = getEmptyCells(currentStage);
@@ -386,7 +386,7 @@ game_html = """
         }
         
         function renderGrid() {
-            const grid = document.getElementById('sudoku-grid'); grid.innerHTML = '';
+            const grid = document.getElementById('nanpure-grid'); grid.innerHTML = '';
             for (let i = 0; i < 81; i++) {
                 const cell = document.createElement('div'); cell.className = 'cell';
                 const row = Math.floor(i / 9);
@@ -436,7 +436,7 @@ game_html = """
         }
         
         function initStage() {
-            generateSudoku(); selectedCell = -1; startTime = Date.now();
+            generateNanpure(); selectedCell = -1; startTime = Date.now();
             document.getElementById('stage-num').textContent = currentStage;
             document.getElementById('clear-overlay').style.display = 'none';
             document.getElementById('stage-select-overlay').style.display = 'none';
