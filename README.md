@@ -1,6 +1,6 @@
-# ✨ Starlight Sudoku ✨
+# ✨ Starlight Nanpure ✨
 
-可愛いナンプレ（数独）ゲーム！
+可愛いナンプレゲーム！
 
 ## 特徴
 
